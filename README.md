@@ -1,2 +1,3 @@
-# bootmat-chrome
-Material-designed bookmarks manager for chrome
+# boomat-chrome
+
+> Material-designed bookmarks manager for chrome
