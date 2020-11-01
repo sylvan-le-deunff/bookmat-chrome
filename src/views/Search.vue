@@ -8,22 +8,26 @@
       </md-field>
       <md-button type="submit" class="md-primary md-raised"> Search </md-button>
     </form>
+
+    <BookMarkList :bookmarks="bookmarks" />
   </div>
 </template>
 
 <script>
+import BookMarkList from "../components/BookMarkList";
 import bookmatApi from "../http";
 
 export default {
   name: "Home",
+  components: { BookMarkList },
   data: () => ({
     query: null,
+    bookmarks: [],
   }),
-  components: {},
   methods: {
     searchBookmark() {
-      bookmatApi.get("/browse?q=" + this.query).then((response) => {
-        console.log(response);
+      bookmatApi.get("/bookmarks?q=" + this.query).then((response) => {
+        this.bookmarks = response.data;
       });
       this.query = null;
     },
